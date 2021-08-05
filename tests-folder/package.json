@@ -1,0 +1,30 @@
+{
+  "name": "cypresstest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:vrt": "percy exec cypress run --spec integration/page-objects.spec.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "test:run": "cypress run --reporter mochawesome",
+    "test:merge": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
+    "test:merge:report": "marge cypress/report/output.json --reportDir report/ --inline",
+    "clean:report": "rmdir /S /Q cypress\\report && mkdir cypress\\report && mkdir cypress\\report\\mochawesome-report",
+    "generate:report": "npm run clean:report && npm run test:run && npm run test:merge && npm run test:merge:report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^7.7.0",
+    "faker": "^5.5.3",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "dependencies": {
+    "package-name": "^0.1.0",
+    "python": "0.0.4"
+  }
+}
